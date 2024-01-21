@@ -135,13 +135,13 @@ const PendingRequests = () => {
           ))}
         </div>
       ) : (
-        <>
+        <div className="mb-12">
           <h3 className="my-8 text-xl">No Pending Requests</h3>
           <div className="mx-auto flex w-fit max-w-xs items-center space-x-3 rounded-full border border-[#2FC816] bg-[#E8FFE8] px-4 py-3">
             <Bell stroke="#2FC816" />
             <span className="text-[#2FC816]">Send Payment requests OTG</span>
           </div>
-        </>
+        </div>
       )}
     </>
   )

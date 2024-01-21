@@ -95,8 +95,8 @@ const AddressInput = () => {
   console.log("😎 ", addressChain)
 
   return (
-    <div className="mt-7 flex h-full w-full max-w-[699px] flex-col items-start justify-center">
-      <div className="relative mx-auto flex h-16 w-full max-w-[699px] items-center rounded-full border border-primary p-8 shadow-[inset_0px_1px_4px_1px_rgba(0,0,0,0.25)]">
+    <div className="mt-7 flex h-full w-full max-w-[699px] flex-col items-start justify-center rounded-full p-0.5 bg-gradient-to-r from-[#00BFA9] to-[#E0B8FF] via-[#00A6FF]">
+      <div className="relative mx-auto flex h-16 w-full max-w-[699px] items-center rounded-full p-8 bg-white">
         <input
           type="text"
           placeholder="Your address"
@@ -109,7 +109,7 @@ const AddressInput = () => {
           <WalletsModal triggerClasses="mt-0 text-sm absolute right-[6px]" />
         ) : (
           <Button
-            className="absolute right-[6px]"
+            className="absolute right-[6px] bg-gradient-to-r from-[#00BFA9] to-[#E0B8FF] via-[#00A6FF]"
             onClick={verifyWalletAddress}
           >
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}

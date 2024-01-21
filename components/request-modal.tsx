@@ -226,7 +226,8 @@ const RequestModal = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-full overflow-hidden p-6 sm:max-w-[392px] sm:rounded-[20px]">
+      <DialogContent className="w-full overflow-hidden sm:max-w-[392px] sm:rounded-[20px] p-0.5">
+        <div className="bg-white p-6 sm:rounded-[20px]">
         {chainSelect ? (
           <ChainSelectModal chains={chainData} setOpen={setChainSelect}>
             <TokensList
@@ -239,7 +240,7 @@ const RequestModal = ({
           </ChainSelectModal>
         ) : (
           <>
-            <DialogHeader className="flex w-full flex-row items-center justify-between">
+            <DialogHeader className="flex w-full flex-row items-center justify-between my-4">
               <DialogTitle className="font-manrope text-3xl font-extrabold">
                 Request
               </DialogTitle>
@@ -353,7 +354,7 @@ const RequestModal = ({
               </div>
               <button
                 onClick={() => request()}
-                className="flex w-full items-center justify-center rounded-full bg-primary py-4 text-white"
+                className="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#00BFA9] to-[#E0B8FF] via-[#00A6FF] py-4 text-white"
               >
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Request
@@ -361,6 +362,7 @@ const RequestModal = ({
             </div>
           </>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   )

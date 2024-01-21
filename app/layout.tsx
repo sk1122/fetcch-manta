@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen w-full font-sans antialiased",
+          "min-h-screen w-full font-sans antialiased bg-gradient-to-r from-[#00FFE11A] to-[#FF66B71A] via-[#00A6FF1A]",
           inter.variable,
           manrope.variable,
           architects_daughter.variable

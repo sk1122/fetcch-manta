@@ -4,6 +4,8 @@ import { useState } from "react"
 import Image from "next/image"
 import decoration from "@/public/assets/decoration.avif"
 import siteLogo from "@/public/assets/fetcch.svg"
+import logo from "@/public/assets/fetcch.svg"
+import manta from "@/public/assets/manta.svg"
 import Subscribe from "@/utils/subscribe"
 import toast from "react-hot-toast"
 
@@ -27,13 +29,17 @@ const Footer = () => {
   }
 
   return (
-    <footer className="z-100 h-fit w-full pt-12">
+    <footer className="z-100 h-fit w-full bg-white pt-12">
       <div className="mx-auto px-6 pb-12 xl:px-20">
-        <div className="flex h-fit min-h-32 flex-col items-start justify-between pb-12 md:flex-row">
+        <div className="min-h-32 flex h-fit flex-col items-start justify-between pb-12 md:flex-row">
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
             <Image src={decoration} alt="decoration" className="w-32" />
             <div className="flex flex-col justify-center sm:ml-8">
-              <Image src={siteLogo} alt="logo" className="w-20" />
+              <div className="flex items-center gap-4">
+                <Image src={logo} alt="logo" priority />
+                x
+                <Image src={manta} alt="logo" priority />
+              </div>
               <p className="mt-4 text-sm">A Web3 Pull Layer Platform</p>
             </div>
           </div>
