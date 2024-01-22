@@ -106,7 +106,7 @@ const AddressInput = () => {
           className="placeholder:text-muted-foreground block w-full bg-transparent pr-24 text-lg ring-0 placeholder:text-[#777777] focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50 md:pr-36"
         />
         {connectedWallet === null ? (
-          <WalletsModal triggerClasses="mt-0 text-sm absolute right-[6px]" />
+          <WalletsModal triggerClasses="mt-0 text-sm absolute right-[6px] bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center" />
         ) : (
           <Button
             className="absolute right-[6px] bg-gradient-to-r from-[#00BFA9] to-[#E0B8FF] via-[#00A6FF]"

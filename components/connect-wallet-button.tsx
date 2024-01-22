@@ -59,7 +59,7 @@ const ConnectWalletButton = () => {
           {isAptosConnected && <AptosaccountModal />}
         </>
       ) : (
-        <WalletsModal triggerClasses="mt-0 text-sm w-full" />
+        <WalletsModal triggerClasses="mt-0 text-sm w-full bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center" />
       )}
     </>
   )

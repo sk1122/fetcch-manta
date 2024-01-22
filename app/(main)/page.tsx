@@ -50,7 +50,7 @@ const LandingPage = () => {
           className="absolute -bottom-96 hidden w-9/12 select-none md:w-6/12 lg:-bottom-28 lg:left-20 lg:block lg:w-4/12 xl:-bottom-28 xl:left-52 xl:w-3/12 2xl:-bottom-36 2xl:left-80 2xl:w-1/4"
         />
 
-        <WalletsModal triggerClasses="flex items-start lg:items-center lg:mx-auto" />
+        <WalletsModal triggerClasses="flex items-start lg:items-center lg:mx-auto bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center" />
 
         <Image
           src={collection4}

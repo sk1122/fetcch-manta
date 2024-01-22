@@ -226,7 +226,8 @@ const RequestModal = ({
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="w-full overflow-hidden sm:max-w-[392px] sm:rounded-[20px] p-0.5">
+      <DialogContent className="w-full overflow-hidden sm:max-w-[392px] sm:rounded-[20px] p-0">
+        <div className="bg-gradient-to-r from-[#00BFA9] to-[#E0B8FF] via-[#00A6FF] p-0.5">
         <div className="bg-white p-6 sm:rounded-[20px]">
         {chainSelect ? (
           <ChainSelectModal chains={chainData} setOpen={setChainSelect}>
@@ -362,6 +363,7 @@ const RequestModal = ({
             </div>
           </>
         )}
+        </div>
         </div>
       </DialogContent>
     </Dialog>
