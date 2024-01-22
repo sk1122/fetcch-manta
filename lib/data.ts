@@ -252,7 +252,15 @@ export const evmChainData: Chain[] = [
         symbol: "DAI",
         logoURI: "/assets/tokens/dai.webp",
         decimals: 6
-      }
+      },
+      {
+        name: "ETH",
+        address: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        chainId: 169,
+        symbol: "ETH",
+        logoURI: "/assets/tokens/ethereum.webp",
+        decimals: 18
+      },
     ],
   },
 ]
