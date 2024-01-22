@@ -24,24 +24,24 @@ const getToken = async (address: string, id: number, rpc: string) => {
         }
     }
     
-    const reqs = await fetch(rpc, {
-        method: "POST",
-        body: JSON.stringify({
-            "jsonrpc": "2.0",
-            "method": "alchemy_getTokenMetadata",
-            "params": [
-                `${address}`
-            ],
-            "id": 42
-        })
-    })
+    // const reqs = await fetch(rpc, {
+    //     method: "POST",
+    //     body: JSON.stringify({
+    //         "jsonrpc": "2.0",
+    //         "method": "alchemy_getTokenMetadata",
+    //         "params": [
+    //             `${address}`
+    //         ],
+    //         "id": 42
+    //     })
+    // })
 
-    const data = await reqs.json()
+    // const data = await reqs.json()
 
-    console.log(data.result, rpc, address, "on server")
-    if(data.result) {
-        return data.result
-    } else {
+    // console.log(data.result, rpc, address, "on server")
+    // if(data.result) {
+    //     return data.result
+    // } else {
         const tokens = [...evmChainData.map(x => x.tokens), ...solanaChainData.map(x => x.tokens), ...aptosChainData.map(x => x.tokens)].flat()
 
         const token = tokens.find(token => token.address.toLowerCase() === address.toLowerCase())
@@ -52,7 +52,7 @@ const getToken = async (address: string, id: number, rpc: string) => {
             symbol: token?.symbol,
             logo: token?.logoURI
         }
-    }
+    // }
 }
 
 export async function GET(req: Request) {
@@ -73,12 +73,25 @@ export async function GET(req: Request) {
   
     let res = await myReq.json()
 
+    let newRequests = []
+
+    for(let i = 0; i < res.data.length; i++) {
+      const req = res.data[i]
+
+      for(let j = 0; j < req.actions.length; j++) {
+        const action = req.actions[j].data
+
+        if(action.chain === 9) newRequests.push(req)
+        else continue
+      }
+    }
 
     let cachedTokens: any = {}
-    for(let i = 0; i < res.data.length; i++) {
-        const req = res.data[i]
+    for(let i = 0; i < newRequests.length; i++) {
+        const req = newRequests[i]
         for(let j = 0; j < req.actions.length; j++) {
             const action = req.actions[j].data
+            console.log(req.actions)
             const chain = [...evmChainData, ...solanaChainData].find(chain => chain.id === action.chain)!
 
             if(cachedTokens[action.token]) {
@@ -95,7 +108,7 @@ export async function GET(req: Request) {
 
     console.log("ON server: ", res.data)
 
-    const sorted = (res.data as any[]).sort((a, b) => new Date(b.requestedAt).getTime() - new Date(a.requestedAt).getTime())
+    const sorted = newRequests.sort((a, b) => new Date(b.requestedAt).getTime() - new Date(a.requestedAt).getTime())
 
     console.log(sorted)
     return Response.json({ data: sorted })
