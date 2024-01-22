@@ -67,16 +67,20 @@ export default function PaymentCard({
   async function handlePayment() {
     const toastId = toast.loading("Executing payment...")
     try {
-
-      if(chainData[selectedChain].id === 7 && connectedWallet !== "solana") {
+      if (chainData[selectedChain].id === 7 && connectedWallet !== "solana") {
         toast.error("Connect your solana wallet")
         throw new Error("")
-      }
-      else if (chainData[selectedChain].id === 8 && connectedWallet !== "aptos") {
+      } else if (
+        chainData[selectedChain].id === 8 &&
+        connectedWallet !== "aptos"
+      ) {
         toast.error("Connect your aptos wallet")
         throw new Error()
-      }
-      else if((chainData[selectedChain].id <= 6 || chainData[selectedChain].id === 9) && connectedWallet !== "evm") {
+      } else if (
+        (chainData[selectedChain].id <= 6 ||
+          chainData[selectedChain].id === 9) &&
+        connectedWallet !== "evm"
+      ) {
         toast.error("Connect your evm wallet")
         throw new Error()
       }
@@ -89,13 +93,13 @@ export default function PaymentCard({
             connectedWallet === "evm"
               ? accountAddress
               : connectedWallet === "solana"
-                ? publicKey?.toBase58()
-                : account?.address.toString(),
+              ? publicKey?.toBase58()
+              : account?.address.toString(),
           fromChain: chainData[selectedChain].id,
-          fromToken: chainData[selectedChain].tokens[selectedToken].address,
+          fromToken: requestedToken?.address,
         },
       }))
-      
+
       const data = await buildTransaction(actions)
       const transactions = data.data[0]
 
@@ -168,8 +172,8 @@ export default function PaymentCard({
             connectedWallet === "evm"
               ? accountAddress
               : connectedWallet === "solana"
-                ? publicKey?.toBase58()
-                : account?.address.toString()
+              ? publicKey?.toBase58()
+              : account?.address.toString()
 
           const data = await updatePaymentRequest(request?.id, payer!, actions)
 
@@ -235,11 +239,14 @@ export default function PaymentCard({
             />
             <p className="text-xl font-semibold md:text-4xl">{amount}</p>
           </div>
-          <TokenModal
-            selectedChain={selectedChain}
-            selectedToken={selectedToken}
-            setSelectedToken={setSelectedToken}
-          />
+          <div className="flex items-center justify-between gap-2 rounded-full bg-[#EBEBEF] px-3 py-2">
+            <img
+              src={requestedToken?.logoURI}
+              alt=""
+              className="h-6 w-6 rounded-full"
+            />
+            <p className="font-medium">{requestedToken?.name}</p>
+          </div>
         </div>
         <div className="mt-6 flex items-start justify-between border-b border-gray-200 pb-6">
           <div className="">
@@ -248,11 +255,14 @@ export default function PaymentCard({
               Select desired chain to send assets
             </p>
           </div>
-          <ChainModal
-            selectedChain={selectedChain}
-            setSelectedChain={setSelectedChain}
-            setSelectedToken={setSelectedToken}
-          />
+          <div className="flex items-center justify-between gap-2 rounded-full bg-[#EBEBEF] px-3 py-2">
+            <img
+              src={requestedChain?.logoURI}
+              alt=""
+              className="h-6 w-6 rounded-full"
+            />
+            <p className="font-medium">{requestedChain?.name}</p>
+          </div>
         </div>
         <div
           className={`${
@@ -261,53 +271,58 @@ export default function PaymentCard({
         ></div>
       </div>
       <div className="mt-4 flex flex-wrap justify-end">
-        {request.executed ? 
+        {request.executed ? (
           <div className="mb-2 w-full md:mb-0 md:pr-2">
-          <button
-            className={(request.executed ? "bg-gray-500" : "bg-[#2B67E8]") + " w-full rounded-full border border-[#2B67E8] py-2 font-medium text-white"}
-            onClick={() => {
-              {
-                request.executed
-                  ? window.navigator.clipboard.writeText(
-                      `${
-                        explorerLinks[request?.actions[0]?.executionData?.chain]
-                      }${request?.actions[0]?.executionData?.hash}`
-                    )
-                  : window.navigator.clipboard.writeText(
-                      `https://request.fetcch.xyz/request/${request.id}`
-                    )
-                toast.success("Copied link")
+            <button
+              className={
+                (request.executed ? "bg-gray-500" : "bg-[#2B67E8]") +
+                " w-full rounded-full border border-[#2B67E8] py-2 font-medium text-white"
               }
-            }}
-          >
-            {request.executed ? "Copy Transaction Link" : "Copy Request Link"}
-          </button>
-        </div>
-        :
-        <>
-        {connectedWallet ? (
-          <>
-            <div className="mb-2 w-full md:mb-0 md:w-1/2 md:pr-2">
-              <button className="w-full rounded-full border border-gray-800 py-2 font-medium text-gray-800">
-                Decline
-              </button>
-            </div>
-            <div className="w-full md:w-1/2 md:pl-2">
-              <button
-                className="w-full rounded-full bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center py-2 font-medium text-white"
-                onClick={handlePayment}
-              >
-                Pay
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="w-full">
-            <ConnectWalletButton />
+              onClick={() => {
+                {
+                  request.executed
+                    ? window.navigator.clipboard.writeText(
+                        `${
+                          explorerLinks[
+                            request?.actions[0]?.executionData?.chain
+                          ]
+                        }${request?.actions[0]?.executionData?.hash}`
+                      )
+                    : window.navigator.clipboard.writeText(
+                        `https://request.fetcch.xyz/request/${request.id}`
+                      )
+                  toast.success("Copied link")
+                }
+              }}
+            >
+              {request.executed ? "Copy Transaction Link" : "Copy Request Link"}
+            </button>
           </div>
+        ) : (
+          <>
+            {connectedWallet ? (
+              <>
+                <div className="mb-2 w-full md:mb-0 md:w-1/2 md:pr-2">
+                  <button className="w-full rounded-full border border-gray-800 py-2 font-medium text-gray-800">
+                    Decline
+                  </button>
+                </div>
+                <div className="w-full md:w-1/2 md:pl-2">
+                  <button
+                    className="w-full rounded-full bg-[url('/assets/manta-button.svg')] bg-cover bg-center bg-no-repeat py-2 font-medium text-white"
+                    onClick={handlePayment}
+                  >
+                    Pay
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="w-full">
+                <ConnectWalletButton />
+              </div>
+            )}
+          </>
         )}
-        </>
-        }
       </div>
     </section>
   )

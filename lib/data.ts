@@ -239,7 +239,7 @@ export const evmChainData: Chain[] = [
       },
       {
         name: "USDT",
-        address: "0x94b008aA00579c1307B0EF2c499aD98a8ce58e58",
+        address: "0xf417F5A458eC102B90352F697D6e2Ac3A3d2851f",
         chainId: 169,
         symbol: "USDT",
         logoURI: "/assets/tokens/usdt.webp",
@@ -247,20 +247,12 @@ export const evmChainData: Chain[] = [
       },
       {
         name: "DAI",
-        address: "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1",
+        address: "0x1c466b9371f8aBA0D7c458bE10a62192Fcb8Aa71",
         chainId: 169,
         symbol: "DAI",
         logoURI: "/assets/tokens/dai.webp",
         decimals: 6
-      },
-      {
-        name: "ETH",
-        address: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
-        chainId: 169,
-        symbol: "ETH",
-        logoURI: "/assets/tokens/ethereum.webp",
-        decimals: 18
-      },
+      }
     ],
   },
 ]

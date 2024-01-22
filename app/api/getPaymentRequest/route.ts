@@ -24,24 +24,24 @@ const getToken = async (address: string, id: number, rpc: string) => {
       }
   }
   
-  const reqs = await fetch(rpc, {
-      method: "POST",
-      body: JSON.stringify({
-          "jsonrpc": "2.0",
-          "method": "alchemy_getTokenMetadata",
-          "params": [
-              `${address}`
-          ],
-          "id": 42
-      })
-  })
+  // const reqs = await fetch(rpc, {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //         "jsonrpc": "2.0",
+  //         "method": "alchemy_getTokenMetadata",
+  //         "params": [
+  //             `${address}`
+  //         ],
+  //         "id": 42
+  //     })
+  // })
 
-  const data = await reqs.json()
+  // const data = await reqs.json()
 
-  console.log(data.result, rpc, address, "on server")
-  if(data.result) {
-      return data.result
-  } else {
+  // console.log(data.result, rpc, address, "on server")
+  // if(data.result) {
+  //     return data.result
+  // } else {
       const tokens = [...evmChainData.map(x => x.tokens), ...solanaChainData.map(x => x.tokens), ...aptosChainData.map(x => x.tokens)].flat()
 
       const token = tokens.find(token => token.address.toLowerCase() === address.toLowerCase())
@@ -52,7 +52,6 @@ const getToken = async (address: string, id: number, rpc: string) => {
           symbol: token?.symbol,
           logo: token?.logoURI
       }
-  }
 }
 
 export async function GET(req: Request) {
@@ -70,26 +69,28 @@ export async function GET(req: Request) {
     })
   
     const res = await myReq.json()
-  
+
+    
     let cachedTokens: any = {}
     const reqs = res.data
 
     for(let j = 0; j < reqs.actions.length; j++) {
       const action = reqs.actions[j].data
-      const chain = [...evmChainData, ...solanaChainData].find(chain => chain.id === action.chain)!
-      console.log(action.token, chain.id)
-      if(cachedTokens[action.token]) {
-        reqs.actions[j].data.tokenData = cachedTokens[action.token]
-      } else {
-          const data = await getToken(action.token, chain.id, chain.rpc)
-
-          reqs.actions[j].data.tokenData = data
-
-          cachedTokens[action.token] = reqs.actions[j].data.tokenData
+      console.log(action.chain, "chain id")
+      if (action.chain === 9) {
+        const chain = [...evmChainData].find(chain => chain.id === action.chain)!
+        if(cachedTokens[action.token]) {
+          reqs.actions[j].data.tokenData = cachedTokens[action.token]
+        } else {
+            const data = await getToken(action.token, chain.id, chain.rpc)
+            reqs.actions[j].data.tokenData = data
+            cachedTokens[action.token] = reqs.actions[j].data.tokenData
+        }
+        console.log(cachedTokens)
       }
   }
 
-    console.log("ON server: ", reqs.actions[0], cachedTokens)
+    console.log(reqs)
     return Response.json({
       data: reqs
     })
