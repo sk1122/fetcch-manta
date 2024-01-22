@@ -121,12 +121,10 @@ export default function RequestCard({ request }: { request: Request }) {
             {
               request.executed
                 ? window.navigator.clipboard.writeText(
-                    `${
-                      explorerLinks[request?.actions[0]?.executionData?.chain]
-                    }${request?.actions[0]?.executionData?.hash}`
+                    `https://pacific-explorer.manta.network/tx/${request?.actions[0]?.executionData?.hash}`
                   )
                 : window.navigator.clipboard.writeText(
-                    `https://request.fetcch.xyz/request/${request.id}`
+                    `https://manta.fetcch.xyz/request/${request.id}`
                   )
               toast.success("Copied link")
             }
