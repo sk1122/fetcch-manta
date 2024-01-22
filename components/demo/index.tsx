@@ -2,7 +2,7 @@ import React from "react"
 
 export default function Demo() {
   return (
-    <section className="flex min-h-[440px] w-full items-center bg-white">
+    <section className="flex min-h-[440px] w-full items-center">
       <div className="relative mx-auto min-h-[310px] w-full max-w-[1220px] bg-[#263238] lg:rounded-2xl">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 lg:block xl:w-fit">
           <DemoImage />
@@ -16,14 +16,14 @@ export default function Demo() {
             <a
               href="https://calendly.com/ray-fetcch/fetcch-demo"
               target="_blank"
-              className="mt-8 inline-block max-w-fit rounded-full border-2 border-primary bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-primary/90"
+              className="mt-8 inline-block max-w-fit rounded-full bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center px-6 py-3 text-sm font-semibold text-white hover:bg-primary/90"
             >
               Book Demo
             </a>
             <a
               href="https://docs.fetcch.xyz/"
               target="_blank"
-              className="mt-8 inline-block max-w-fit rounded-full border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-white hover:bg-primary/90"
+              className="mt-8 inline-block max-w-fit rounded-full border-2 border-primary bg-transparent px-6 py-3 text-sm font-semibold text-white hover:bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center"
             >
               Integrate
             </a>

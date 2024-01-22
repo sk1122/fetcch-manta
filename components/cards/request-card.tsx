@@ -116,7 +116,7 @@ export default function RequestCard({ request }: { request: Request }) {
       </div>
       <div className="mt-4">
         <button
-          className={(request.executed ? "bg-gray-500" : "bg-[#2B67E8]") + " w-full rounded-full border border-[#2B67E8] py-2 font-medium text-white"}
+          className={(request.executed ? "bg-gray-500" : "bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center") + " w-full rounded-full py-3 font-medium text-white"}
           onClick={() => {
             {
               request.executed

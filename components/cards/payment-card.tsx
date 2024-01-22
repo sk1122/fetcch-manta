@@ -294,7 +294,7 @@ export default function PaymentCard({
             </div>
             <div className="w-full md:w-1/2 md:pl-2">
               <button
-                className="w-full rounded-full border border-[#2B67E8] bg-[#2B67E8] py-2 font-medium text-white"
+                className="w-full rounded-full bg-[url('/assets/manta-button.svg')] bg-cover bg-no-repeat bg-center py-2 font-medium text-white"
                 onClick={handlePayment}
               >
                 Pay
