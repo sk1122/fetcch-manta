@@ -5,8 +5,8 @@ const getToken = async (address: string, id: number, rpc: string) => {
         return {
             decimals: 18,
             logo: "",
-            name: id === 1 || id === 5 || id === 6 ? "Ethereum" : id === 2 ? "Polygon" : id === 4 ? "Avalanche" : "BSC",
-            symbol: id === 1 || id === 5 || id === 6 ? "ETH" : id === 2 ? "POL" : id === 4 ? "AVAX" : "BSC"
+            name: id === 1 || id === 5 || id === 6 || id === 9 ? "Ethereum" : id === 2 ? "Polygon" : id === 4 ? "Avalanche" : "BSC",
+            symbol: id === 1 || id === 5 || id === 6 || id === 9 ? "ETH" : id === 2 ? "POL" : id === 4 ? "AVAX" : "BSC"
         }
     } else if (address == "1111111111111111111111111111111111111111111") {
         return {
