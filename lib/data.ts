@@ -347,7 +347,8 @@ export const explorerLinks: any = {
   5: "https://optimistic.etherscan.io/tx/",
   6: "https://arbiscan.io/tx/",
   7: "https://solana.fm/tx/",
-  8: "https://explorer.aptoslabs.com/txn/"
+  8: "https://explorer.aptoslabs.com/txn/",
+  9: "https://pacific-explorer.manta.network/tx/"
 }
 
 export const chainData: Chain[] = [
