@@ -190,7 +190,7 @@ const WalletsModal = ({ triggerClasses }: { triggerClasses?: string }) => {
               Connect Wallet
             </Button>
           </DialogTrigger>
-          <DialogContent className="w-full p-9 sm:max-w-xl md:max-w-[874px]">
+          <DialogContent className="w-full p-9 sm:max-w-xl md:max-w-[574px]">
             <DialogHeader className="w-full flex-row items-center justify-between">
               <DialogTitle className="font-manrope text-3xl font-bold">
                 Connect Wallet
@@ -202,16 +202,16 @@ const WalletsModal = ({ triggerClasses }: { triggerClasses?: string }) => {
                 <span className="sr-only">Close</span>
               </DialogClose>
             </DialogHeader>
-            <div className="flex flex-col items-center justify-between space-y-3 sm:flex-row">
+            <div className="flex flex-col items-center justify-center space-y-3 sm:flex-row">
               <RainbowConnectButton
                 setIsWalletsModalOpen={setIsWalletsModalOpen}
               />
-              <SolanaConnectBtutton
+              {/* <SolanaConnectBtutton
                 setIsWalletsModalOpen={setIsWalletsModalOpen}
               />
               <AptosConnectButton
                 setIsWalletsModalOpen={setIsWalletsModalOpen}
-              />
+              /> */}
             </div>
           </DialogContent>
         </Dialog>

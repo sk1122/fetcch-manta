@@ -18,22 +18,22 @@ const MainNav = () => {
       </Link>
       <ul className="hidden items-center space-x-6 md:flex xl:space-x-12">
         <Link
-          href="#"
+          href="https://fetcch.xyz/about-us"
           className="text-[#363C46] transition-all duration-200 hover:text-primary"
         >
-          Products
+          About Us
+        </Link>
+        <Link
+          href="https://docs.fetcch.xyz/"
+          className="text-[#363C46] transition-all duration-200 hover:text-primary"
+        >
+          Integrate
         </Link>
         <Link
           href="#"
           className="text-[#363C46] transition-all duration-200 hover:text-primary"
         >
-          Learn
-        </Link>
-        <Link
-          href="#"
-          className="text-[#363C46] transition-all duration-200 hover:text-primary"
-        >
-          Use Cases
+          Resources
         </Link>
       </ul>
       <div className="max-w-fit">
