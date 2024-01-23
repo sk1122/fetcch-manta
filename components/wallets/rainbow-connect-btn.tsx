@@ -3,7 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
-import ethereum from "@/public/assets/ethereum.svg"
+import manta from "@/public/assets/tokens/manta.webp"
 import { useConnectModal } from "@rainbow-me/rainbowkit"
 import { useAccount, useDisconnect } from "wagmi"
 
@@ -46,14 +46,14 @@ const RainbowConnectBtutton = ({ setIsWalletsModalOpen }: WalletBtnProps) => {
       }}
     >
       <Image
-        src={ethereum}
+        src={manta}
         alt="ethereum_image"
         className="h-32 w-32 -translate-y-4"
         width={128}
         height={128}
       />
       <span className="absolute bottom-4 font-manrope text-xl font-semibold">
-        {isConnected ? truncatePublicKey(address!) : "Ethereum"}
+        {isConnected ? truncatePublicKey(address!) : "Manta"}
       </span>
     </button>
   )

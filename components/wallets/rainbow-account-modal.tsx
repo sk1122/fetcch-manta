@@ -2,7 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
-import ethereum from "@/public/assets/tokens/ethereum.webp"
+import manta from "@/public/assets/tokens/manta.webp"
 import { Close as DialogClose } from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { useAccount, useDisconnect } from "wagmi"
@@ -32,8 +32,8 @@ const RainbowAccountModal = () => {
       <DialogTrigger>
         <button className="bg-input flex flex-shrink-0 items-center space-x-2 rounded-full p-2">
           <Image
-            src={ethereum}
-            alt="ethereum_image"
+            src={manta}
+            alt="manta_image"
             className="h-8 w-8 rounded-full"
             width={32}
             height={32}
