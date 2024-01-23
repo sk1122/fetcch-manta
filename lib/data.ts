@@ -261,6 +261,14 @@ export const evmChainData: Chain[] = [
         logoURI: "/assets/tokens/ethereum.webp",
         decimals: 18
       },
+      {
+        name: "MANTA",
+        address: "0x95CeF13441Be50d20cA4558CC0a27B601aC544E5",
+        chainId: 169,
+        symbol: "MANTA",
+        logoURI: "/assets/tokens/manta.webp",
+        decimals: 18
+      },
     ],
   },
 ]
