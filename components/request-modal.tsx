@@ -243,7 +243,7 @@ const RequestModal = ({
           <>
             <DialogHeader className="flex w-full flex-row items-center justify-between my-4">
               <DialogTitle className="font-manrope text-3xl font-extrabold">
-                Request
+                Request Details
               </DialogTitle>
               <DialogClose className="w-fit rounded-full border-2 border-primary p-2 opacity-70 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none data-[state=open]:bg-primary data-[state=open]:text-primary">
                 <X className="h-4 w-4 font-bold text-primary" strokeWidth={4} />
@@ -252,7 +252,7 @@ const RequestModal = ({
             </DialogHeader>
             <div className="flex flex-col space-y-4 overflow-hidden">
               <div className="group overflow-hidden rounded-xl border-2 border-primary bg-[#E3ECFF] pt-4 hover:bg-primary/50">
-                <span className="px-4 font-manrope font-bold">To</span>
+                <span className="px-4 font-manrope font-bold">Deposit address</span>
                 <div className="flex items-center space-x-3 p-4">
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#B0C8FE]">
                     <User className="h-4 w-4 stroke-primary" />
