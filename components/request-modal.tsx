@@ -252,7 +252,7 @@ const RequestModal = ({
             </DialogHeader>
             <div className="flex flex-col space-y-4 overflow-hidden">
               <div className="group overflow-hidden rounded-xl border-2 border-primary bg-[#E3ECFF] pt-4 hover:bg-primary/50">
-                <span className="px-4 font-manrope font-bold">Deposit address</span>
+                <span className="px-4 font-manrope font-bold">Deposit Address</span>
                 <div className="flex items-center space-x-3 p-4">
                   <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#B0C8FE]">
                     <User className="h-4 w-4 stroke-primary" />
